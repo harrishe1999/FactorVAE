@@ -21,10 +21,6 @@ The model consists of several key components:
 git clone https://github.com/harrishe1999/FactorVAE.git \
 cd FactorVAE
 
-
-## Usage
-*This section will be updated with instructions for training and inference once those features are implemented.*
-
 ## Example
 python
 from FactorVAE import FactorVAE  # Make sure to import your model correctly
