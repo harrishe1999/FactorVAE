@@ -162,14 +162,6 @@ else:
 
 
 
-# the model is not learning as loss never goes down
-import requests
-request = requests.get('https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/helper_functions.py')
-with open('helper_function.py', 'wb') as f:
-  f.write(request.content)
-
-
-
 
 
 
