@@ -26,15 +26,13 @@ cd FactorVAE
 *This section will be updated with instructions for training and inference once those features are implemented.*
 
 ## Example
-\```python
+python
 from FactorVAE import FactorVAE  # Make sure to import your model correctly
 
 ## Initialize model
 model = FactorVAE()
 
-## Model Training (To be implemented)
-\```
-
+## Model Training (Under development)
 
 ## Acknowledgments
 - Paper: "FactorVAE: A Probabilistic Dynamic Factor Model Based on Variational Autoencoder for Predicting Cross-Sectional Stock Returns"
