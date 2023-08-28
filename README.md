@@ -19,7 +19,7 @@ The model consists of several key components:
 
 ## Installation
 \```bash
-git clone https://github.com/[YourUsername]/FactorVAE.git
+git clone https://github.com/harrishe1999/FactorVAE.git
 cd FactorVAE
 \```
 (Replace `[YourUsername]` with your GitHub username.)
