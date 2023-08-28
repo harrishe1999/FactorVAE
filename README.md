@@ -18,7 +18,7 @@ The model consists of several key components:
 - NumPy
 
 ## Installation
-git clone https://github.com/harrishe1999/FactorVAE.git
+git clone https://github.com/harrishe1999/FactorVAE.git \
 cd FactorVAE
 
 
