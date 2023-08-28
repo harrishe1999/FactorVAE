@@ -18,11 +18,9 @@ The model consists of several key components:
 - NumPy
 
 ## Installation
-\```bash
 git clone https://github.com/harrishe1999/FactorVAE.git
 cd FactorVAE
-\```
-(Replace `[YourUsername]` with your GitHub username.)
+
 
 ## Usage
 *This section will be updated with instructions for training and inference once those features are implemented.*
@@ -31,14 +29,10 @@ cd FactorVAE
 \```python
 from FactorVAE import FactorVAE  # Make sure to import your model correctly
 
-# Your data
-# x = ...
-# y = ...
-
-# Initialize model
+## Initialize model
 model = FactorVAE()
 
-# Model Training (To be implemented)
+## Model Training (To be implemented)
 \```
 
 
