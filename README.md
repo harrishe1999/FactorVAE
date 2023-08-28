@@ -38,15 +38,9 @@ from FactorVAE import FactorVAE  # Make sure to import your model correctly
 # Initialize model
 model = FactorVAE()
 
-# Model Training
-# To be implemented
+# Model Training (To be implemented)
 \```
 
-## Contributing
-Feel free to open an issue or pull request if you find any bugs or have suggestions for additional features.
-
-## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## Acknowledgments
 - Paper: "FactorVAE: A Probabilistic Dynamic Factor Model Based on Variational Autoencoder for Predicting Cross-Sectional Stock Returns"
