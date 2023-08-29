@@ -8,6 +8,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+torch.manual_seed(1025)
+
 class FeatureExtractor(nn.Module):
     def __init__(self, proj_dim=20, H=25):
         super().__init__()
@@ -48,13 +50,12 @@ class FactorEncoder(nn.Module):
             yp = torch.einsum("bn,bnm->bm", y, ap)
         else:
             yp = torch.einsum("n,nm->m", y, ap).unsqueeze(0)
-        mu_post = self.mapping_layer_mu(yp).squeeze()
-        sigma_post = F.softplus(self.mapping_layer_sigma(yp)).squeeze()
+        mu_post = self.mapping_layer_mu(yp)
+        sigma_post = F.softplus(self.mapping_layer_sigma(yp))
         return mu_post, sigma_post
 
 factor_encoder = FactorEncoder()
-mu_post, sigma_post = factor_encoder(y, e)
-
+z = factor_encoder(y, e)
 
 class AlphaLayer(nn.Module):
     def __init__(self, H=25):
@@ -71,11 +72,22 @@ class AlphaLayer(nn.Module):
         return mu_alpha, sigma_alpha
 
 
+class FactorDecoder(nn.Module):
+    def __init__(self, K=25):
+        super().__init__()
+        self.alpha_layer = AlphaLayer()
+        self.beta_layer = nn.Linear(25, K)
 
+    def forward(self, z, e):
+        mu_z, sigma_z = z[0].unsqueeze(-1), z[1].unsqueeze(-1)
+        mu_alpha, sigma_alpha = self.alpha_layer(e)[0].unsqueeze(-1), self.alpha_layer(e)[1].unsqueeze(-1)
+        beta = self.beta_layer(e)
+        mu_y = (mu_alpha + beta @ mu_z).squeeze(-1)
+        sigma_y = torch.sqrt(sigma_alpha ** 2 + beta ** 2 @ sigma_z ** 2).squeeze(-1)
+        return mu_y, sigma_y
 
-
-
-
+factor_decoder = FactorDecoder()
+factor_decoder(z, e)
 
 
 
