@@ -21,10 +21,6 @@ The model consists of several key components:
 git clone https://github.com/harrishe1999/FactorVAE.git \
 cd FactorVAE
 
-## Example
-python
-from FactorVAE import FactorVAE  # Make sure to import your model correctly
-
 ## Initialize model
 model = FactorVAE()
 
