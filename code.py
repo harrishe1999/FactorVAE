@@ -52,24 +52,23 @@ class FactorEncoder(nn.Module):
         sigma_post = F.softplus(self.mapping_layer_sigma(yp)).squeeze()
         return mu_post, sigma_post
 
+factor_encoder = FactorEncoder()
+mu_post, sigma_post = factor_encoder(y, e)
+
+
 class AlphaLayer(nn.Module):
     def __init__(self, H=25):
         super().__init__()
-        self.layers = nn.Sequential(
-            nn.Linear(25, H),
-            nn.LeakyReLU(),
-            nn.Linear(H, 1))
+        self.linear_1 = nn.Linear(25, H)
+        self.leakyrelu = nn.LeakyReLU()
+        self.linear_2 = nn.Linear(H, 1)
         self.mapping_layer_sigma = nn.Linear(H, 1)
 
     def forward(self, e):
-        h_alpha = self.layers[:-1](e)
-        mu_alpha = self.layers[-1](h_alpha).squeeze()
+        h_alpha = self.leakyrelu(self.linear_1(e))
+        mu_alpha = self.linear_2(h_alpha).squeeze()
         sigma_alpha = F.softplus(self.mapping_layer_sigma(h_alpha)).squeeze()
         return mu_alpha, sigma_alpha
-
-
-
-
 
 
 
